@@ -1,61 +1,42 @@
-# Nome do nosso workflow. Aparecerá na aba "Actions" do GitHub.
 name: Deploy to GitHub Pages
 
-# Gatilho: Este workflow irá rodar toda vez que você fizer um 'push'
-# para a branch 'main'. Se sua branch principal for 'master', troque aqui.
 on:
   push:
     branches:
       - master
 
-# Permissões necessárias para que a Action possa publicar no GitHub Pages.
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Tarefas (Jobs) que o workflow irá executar.
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # Usar a versão mais recente do Ubuntu como máquina virtual
-
+    runs-on: ubuntu-latest
     steps:
-      # 1. Baixa o código do seu repositório para a máquina virtual
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      # 2. Configura o ambiente Node.js na versão que você usa (ajuste se necessário)
       - name: Setup Node.js 🟩
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      # 3. Instala as dependências do projeto
       - name: Install dependencies 📦
         run: npm install
 
-      # 4. Constrói a aplicação para produção. ESTA É A PARTE MAIS IMPORTANTE!
       - name: Build 🔨
-        run: npm run build -- --configuration production --base-href /<nome-do-seu-repositorio>/
-        # ❗❗ ATENÇÃO: Troque <nome-do-seu-repositorio> pelo nome exato do seu repo no GitHub!
-        # Exemplo: --base-href /meu-painel-admin/
+        run: npm run build -- --configuration production --base-href /angular-painel-admin/
 
-      # 5. Configura o ambiente para a publicação no GitHub Pages
       - name: Setup Pages ⚙️
         uses: actions/configure-pages@v4
 
-      # 6. Faz o upload do artefato (a pasta 'dist/') para o GitHub Pages
       - name: Upload artifact ⬆️
         uses: actions/upload-pages-artifact@v3
         with:
-          # O caminho para a pasta que foi gerada pelo comando 'build'
-          path: ./dist/<nome-do-seu-projeto-angular>/
-          # ❗❗ ATENÇÃO: O Angular cria uma subpasta dentro de 'dist'.
-          # Verifique o nome dela no seu arquivo 'angular.json' (geralmente é o nome do projeto)
-          # e substitua '<nome-do-seu-projeto-angular>' aqui.
+          path: ./dist/angular-painel-admin/
 
-      # 7. Finaliza o deploy, publicando o site
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v4
