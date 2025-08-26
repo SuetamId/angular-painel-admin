@@ -1,0 +1,51 @@
+<div class="page-container dashboard-grid">
+
+  <div class="page-header">
+    <h1>Dashboard</h1>
+    <p>Bem-vindo! Aqui está um resumo da sua aplicação.</p>
+  </div>
+
+  <!-- Cards de Estatísticas -->
+  <app-stats-card class="grid-card-users" title="Usuários Ativos" [value]="users.length" icon="group"></app-stats-card>
+  <app-stats-card class="grid-card-products" title="Produtos Cadastrados" [value]="products.length" icon="store"></app-stats-card>
+
+  <!-- Card do Gráfico de Usuários -->
+  <mat-card class="grid-chart-users"> <!-- <-- MUDANÇA AQUI -->
+    <mat-card-header>
+      <mat-card-title>Novos Usuários por Mês</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="chart-container">
+      <ngx-charts-bar-vertical
+        [results]="newUsersData"
+        [scheme]="chartColorScheme"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        xAxisLabel="Mês"
+        yAxisLabel="Novos Usuários">
+      </ngx-charts-bar-vertical>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Card do Gráfico de Produtos -->
+  <mat-card class="grid-chart-products"> <!-- <-- MUDANÇA AQUI -->
+    <mat-card-header>
+      <mat-card-title>Novos produtos por Mês</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="chart-container">
+      <ngx-charts-bar-vertical
+        [results]="newProductsData"
+        [scheme]="chartColorScheme"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        xAxisLabel="Mês"
+        yAxisLabel="Novos Produtos">
+      </ngx-charts-bar-vertical>
+    </mat-card-content>
+  </mat-card>
+</div>

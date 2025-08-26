@@ -1,0 +1,17 @@
+.stats-card {
+  width: 100%;
+  .icon {
+    font-size: 36px;
+    height: 36px;
+    width: 36px;
+    color: #3f51b5;
+    /* Cor primária do Material */
+  }
+
+  .value {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 0;
+    text-align: right;
+  }
+}

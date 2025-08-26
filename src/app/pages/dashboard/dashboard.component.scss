@@ -1,0 +1,57 @@
+.page-container {
+  padding: 24px;
+}
+
+.page-header {
+  grid-area: header;
+  margin-bottom: 16px;
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-areas:
+    "header"
+    "users"
+    "products"
+    "chart-users"
+    "chart-products";
+
+  @media (min-width: 960px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "header header"
+      "users products"
+      "chart-users chart-products";
+  }
+
+  // Layout para telas grandes
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "header header header header"
+      "users products . ."
+      "chart-users chart-users chart-products chart-products";
+  }
+}
+
+.grid-card-users {
+  grid-area: users;
+}
+
+.grid-card-products {
+  grid-area: products;
+}
+
+.grid-chart-users {
+  grid-area: chart-users;
+}
+
+.grid-chart-products {
+  grid-area: chart-products;
+}
+
+.chart-container {
+  height: 350px;
+  margin: 20px;
+}

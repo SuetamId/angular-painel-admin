@@ -1,0 +1,37 @@
+.logo {
+  padding: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+// Aplica estilo a todos os links da lista
+a[mat-list-item] {
+  height: 48px;
+  font-size: 1rem;
+  color: #546e7a; // Um cinza-azulado para o texto
+
+  // Melhora o alinhamento do ícone com o texto
+  mat-icon {
+    margin-right: 16px;
+  }
+}
+
+// Estilo mais forte para o link ativo
+.active-link {
+  background-color: #e8eaf6; // Um fundo de cor lavanda, da paleta do Indigo do Material
+  color: #3f51b5; // A cor primária para o texto e ícone
+  font-weight: 500; // Deixa a fonte um pouco mais forte
+
+  // Adiciona uma "barrinha" lateral para indicar a seleção
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #3f51b5; // Cor primária
+  }
+}

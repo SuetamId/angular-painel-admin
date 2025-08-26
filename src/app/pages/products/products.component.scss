@@ -1,0 +1,20 @@
+// Reutiliza os mesmos estilos da página de usuários para consistência
+@import '../users/users.component.scss';
+
+// Adiciona estilos específicos para os chips de estoque
+.mat-mdc-chip {
+  color: white !important;
+  font-weight: 500;
+}
+
+.chip-stock-ok {
+  background-color: #4caf50 !important; // Verde
+}
+
+.chip-stock-low {
+  background-color: #ff9800 !important; // Laranja
+}
+
+.chip-stock-out {
+  background-color: #f44336 !important; // Vermelho
+}
